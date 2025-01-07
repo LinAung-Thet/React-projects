@@ -14,7 +14,10 @@
     "normalize.css": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-phone-input-2": "^2.15.1"
+    "react-phone-input-2": "^2.15.1",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
