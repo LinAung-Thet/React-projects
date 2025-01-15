@@ -1,0 +1,3 @@
+Run in the terminal window to create the package.json file.
+npm init --yes && npm pkg set type="module"
+
