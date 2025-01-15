@@ -1,3 +1,7 @@
 Run in the terminal window to create the package.json file.
 npm init --yes && npm pkg set type="module"
 
+Installed Apollo GraphQL server
+npm install @apollo/server graphql
+
+Added server.js in the server folder.
