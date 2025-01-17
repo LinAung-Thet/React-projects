@@ -19,3 +19,5 @@ Variant: JavaScript
 Installed the specified dependencies.
 npm install
 
+Installed the Apollo GraphQL client.
+npm install @apollo/client graphql
