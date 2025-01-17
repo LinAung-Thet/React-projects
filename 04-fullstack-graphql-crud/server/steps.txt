@@ -5,3 +5,17 @@ Installed Apollo GraphQL server
 npm install @apollo/server graphql
 
 Added server.js in the server folder.
+
+
+Change the working directory in the Terminal window to the client folder
+
+Installed Vite
+npx create-vite
+
+Project name: .
+Framework: React
+Variant: JavaScript
+
+Installed the specified dependencies.
+npm install
+
