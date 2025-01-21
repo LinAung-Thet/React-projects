@@ -25,8 +25,8 @@ query GetUserByID($id: ID!){
 `;
 
 const CREATE_USER = gql`
-  mutation CreateUser($name: String!, $age: Int!, $isMarried: Boolean){
-  createUser(name: $name, Age: $age, isMarried: $isMarried) {
+  mutation CreateUser($name: String!, $age: Int!, $isMarried: Boolean!){
+  createUser(name: $name, age: $age, isMarried: $isMarried) {
     name
     isMarried
   }
