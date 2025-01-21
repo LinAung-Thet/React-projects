@@ -1,5 +1,6 @@
 import './App.css'
 import {useQuery, useMutation, gql} from "@apollo/client";
+import { useState } from "react";
 
 const GET_USER = gql`
 query GetUsers{
@@ -13,8 +14,8 @@ query GetUsers{
 `;
 
 const GET_USER_BY_ID = gql`
-query GetUsersByID($id: ID!){
-  getUsersById(id: $id){
+query GetUserByID($id: ID!){
+  getUserById(id: $id){
     id
     age
     name
@@ -33,15 +34,16 @@ const CREATE_USER = gql`
 `;
 
 function App() {
+  const [newUser, setNewUser] = useState({});
+
   const {
     data: getUsersData, 
     error: getUsersError, 
     loading: getUsersLoading
   } = useQuery(GET_USER);
 
-  const {data: getUsersByIdData, 
-    error: getUsersByIdError, 
-    loading: getUsersByIdLoading
+  const {data: getUserByIdData, 
+    loading: getUserByIdLoading
   } = useQuery(GET_USER_BY_ID, {
     variables: {id: "2"}
   });
@@ -52,18 +54,44 @@ function App() {
 
   if(getUsersError) return <p>Error: {getUsersError.message}</p>;
 
+  const handleCreateUser = async () => {
+    console.log(newUser);
+    createUser({
+      variables: {
+        name: newUser.name,
+        age: Number(newUser.age),
+        isMarried: false,
+      },
+    });
+  };
+
   return (
     <>
       <h1>Users</h1>
-
       <div>
-        {getUsersByIdLoading ? (
+        <input
+          placeholder="Name..."
+          onChange={(e) =>
+            setNewUser((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+        <input
+          placeholder="Age..."
+          type="number"
+          onChange={(e) =>
+            setNewUser((prev) => ({ ...prev, age: e.target.value }))
+          }
+        />
+        <button onClick={handleCreateUser}> Create User</button>
+      </div>
+      <div>
+        {getUserByIdLoading ? (
           <p>Loading user ...</p>
         ) : (
           <>
             <h1>Chosen User</h1>
-            <p>{getUsersByIdData.getUsersById.name}</p>
-            <p>{getUsersByIdData.getUsersById.age}</p>
+            <p>{getUserByIdData.getUserById.name}</p>
+            <p>{getUserByIdData.getUserById.age}</p>
           </>
         )}
       </div>

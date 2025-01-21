@@ -21,3 +21,14 @@ npm install
 
 Installed the Apollo GraphQL client.
 npm install @apollo/client graphql
+
+
+Testing createUser mutation in web broswer
+mutation {
+  createUser(name: "Jim", age: 20, isMarried: true) {
+    id
+    name
+    age
+    isMarried
+  }
+}
